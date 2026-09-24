@@ -212,9 +212,21 @@
             const curve = dataset.curves[index];
 
             const traces = [
-                makeTrace(
-                    curve.measured, "Measured", "#58758a", "markers"
-                )
+                {
+                    x: curve.measured.map(point => point[0]),
+                    y: curve.measured.map(point => point[1]),
+                    type: "scatter",
+                    mode: "lines+markers",
+                    name: "Measured",
+                    marker: {
+                        color: "#58758a",
+                        size: 4
+                    },
+                    line: {
+                        color: "#58758a",
+                        width: 1.5
+                    }
+                }
             ];
 
             if (curve.linear.length) {
